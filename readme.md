@@ -14,7 +14,7 @@ This project is created as an assignment for the position of Backend Intern at M
  - **NOTE: A comma separated list of API keys is necessary to utilize the feature of multiple API keys**
  
  #### Connecting to MongoDB Atlas:
- - Use the MongoDB Atlas cloud console to get the connection string for you cluster.
+ - Use the MongoDB Atlas cloud console to get the connection string for your cluster.
 
 ## The .env File
 
