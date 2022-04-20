@@ -24,3 +24,31 @@ After that, if you have nodemon installed, then simply run the following command
 ```
 nodemon server
 ```
+
+## Test the API
+
+### 1. Testing pagination
+
+Create a GET request to the following url:
+```
+http://localhost:3000
+```
+with the following query parameters:
+- `page` - to specify the page
+- `limit` - to specify the number of results to fetch from that page
+- Both the values should be greater than 1
+
+### 2. Testing Search feature
+
+Create a POST request to the following url:
+```
+http://localhost:3000/search
+```
+with the following body in JSON format:
+```
+{
+    "title":<string-to-search>,
+    "description":<string-to-search>,
+}
+```
+**NOTE: Both title and description are optional**
