@@ -1,12 +1,15 @@
 const { google } = require("googleapis");
 const Yvid = require("./models/yvid.model");
 
+// Variable to keep the index of the current API key
+let apiKeyIndex = 0;
+
 // Fetching youtube videos and saving them to the database
 function fetchAndSave() {
 	google
 		.youtube("v3")
 		.search.list({
-			key: process.env.GOOGLE_API_KEY,
+			key: process.env.GOOGLE_API_KEYS.split(",")[apiKeyIndex],
 			part: ["snippet,id"],
 			maxResults: 10,
 			order: "date",
@@ -16,8 +19,29 @@ function fetchAndSave() {
 			type: ["video"],
 		})
 		.then((res) => saveData(res.data.items))
-		.catch((err) => console.log(err));
+		.catch((err) => {
+			if (isQuotaExceeded(err)) {
+				if (process.env.GOOGLE_API_KEYS.split(",").length > apiKeyIndex) {
+					console.log("Ran Out of APIKeys");
+				} else {
+					console.log("Trying with the next API key...");
+					apiKeyIndex++;
+				}
+			}
+			console.log(err);
+		});
 }
+
+// Function for checking whether the Quota is Exceeded or not
+// If the quota is exceeded, then it returns true else false
+let isQuotaExceeded = (err) => {
+	if (err.code === 403) {
+		let errorList = err.error.errors;
+		return errorList.has((e) => e.reason === "quotaExceeded");
+	} else {
+		return false;
+	}
+};
 
 // Mapping the fetched youtube videos to a promise array
 // which can be used to determine if all the videos were saved
