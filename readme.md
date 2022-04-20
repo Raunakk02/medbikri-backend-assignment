@@ -11,13 +11,14 @@ This project is created as an assignment for the position of Backend Intern at M
  #### Enabling YouTube Data API V3:
  - Now, go to the Google Cloud Console > select `APIs and Services` from the `navigation menu` > Then click on the `ENABLE API AND SERVICES` button > Search for "YouTube Data API v3" > Enable the API. <br> Alternatively, you can also visit this link: https://console.cloud.google.com/apis/library/youtube.googleapis.com.
  - After enabling the YouTube API, generate new Credentials (API key) for this YouTube Data API.
+ - **NOTE: A comma separated list of API keys is necessary to utilize the feature of multiple API keys**
  
  #### Connecting to MongoDB Atlas:
  - Use the MongoDB Atlas cloud console to get the connection string for you cluster.
 
 ## The .env File
 
-Now create a new `.env` file in the project's root directory similar to the provided `example.env` file and store the required Google API Key and the atlas connection string in the required variables.
+Now create a new `.env` file in the project's root directory similar to the provided `example.env` file and store the required comma separated list of Google API Keys and the atlas connection string in the required variables.
 
 After that, if you have nodemon installed, then simply run the following command:
 ```
