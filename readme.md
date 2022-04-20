@@ -14,7 +14,11 @@ This project is created as an assignment for the position of Backend Intern at M
  - **NOTE: A comma separated list of API keys is necessary to utilize the feature of multiple API keys**
  
  #### Connecting to MongoDB Atlas:
- - Use the MongoDB Atlas cloud console to get the connection string for your cluster.
+ - Create a MongoDB Atlas cluster
+ - In the `Database` tab under `Deployment` section, click on the `Connect` button.
+ - Choose **Connect your application**
+ - Under the `Add your connection string into your application code` section, uncheck the *Include full driver code example*
+ - The string being displayed now, is the connection string for your cluster. Use this string in the next steps.
 
 ## The .env File
 
